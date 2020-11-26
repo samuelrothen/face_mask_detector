@@ -1,6 +1,6 @@
 import cv2
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 
 tracker = cv2.TrackerMOSSE_create()
 tracker = cv2.TrackerCSRT_create()
