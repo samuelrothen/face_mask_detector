@@ -23,4 +23,5 @@ jobs:
         
     - name: Lint with pylint
       run: |
-        pylint --disable=C0114 ./**/*.py
+        find . -iname "*.py" | xargs pylint --disable=C0114
+
