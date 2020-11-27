@@ -66,12 +66,12 @@ def returnProbaMask(face,model_mask):
 
 
 #Pretrained cv2-Model for Face-Recognition
-model_face = cv2.dnn.readNet('face_detector/deploy.prototxt',
-                          'face_detector/res10_300x300_ssd_iter_140000.caffemodel')
+model_face = cv2.dnn.readNet('../models/deploy.prototxt',
+                          '../models/res10_300x300_ssd_iter_140000.caffemodel')
 
 
 #Load the Mask Prediction Model
-model_mask = keras.models.load_model('mask_detector.h5')
+model_mask = keras.models.load_model('../models/test.h5')
 
 
 #Initialize Capture and set Framesize
@@ -106,7 +106,7 @@ while True:
                       color, 2)
         cv2.putText(img, text, (coords[0], coords[1] - 10),
                      cv2.FONT_HERSHEY_DUPLEX, 1.0, color, 1)
-        cv2.putText(img, f'FaceDetect: {round(l_probas[i]*100,1)}', (coords[0], coords[1] - 40),
+        cv2.putText(img, f'FaceDetect: {round(l_probas[i]*100,1)}%', (coords[0], coords[1] - 40),
                      cv2.FONT_HERSHEY_DUPLEX, 1.0, color, 1)
         # cv2.circle(img, l_centers[i], 10,
         #                color, 2)
