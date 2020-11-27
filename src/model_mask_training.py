@@ -11,12 +11,12 @@ import pandas as pd
 
 classes=['mask','no_mask']
 base_path= '../data/'
-model_name='mask_detection_model'
+model_name='mask_detection_model3'
 
 base_model = mobilenet_v2.MobileNetV2(
     weights='imagenet', 
-    alpha=0.35,
-    pooling='avg',
+    # alpha=0.35,
+    # pooling='avg',
     include_top=False,
     input_shape=(224, 224, 3))
 
@@ -24,6 +24,8 @@ base_model.trainable = False
 
 model = keras.Sequential()
 model.add(base_model)
+model.add(keras.layers.AveragePooling2D((7,7)))
+model.add(keras.layers.Flatten())
 model.add(keras.layers.Dense(100, activation='relu'))
 model.add(keras.layers.Dropout(0.5))
 model.add(keras.layers.Dense(len(classes), activation='softmax'))
@@ -34,7 +36,7 @@ model.compile(optimizer=keras.optimizers.Adam(learning_rate=0.001),
               loss=keras.losses.categorical_crossentropy,
               metrics=[keras.metrics.categorical_accuracy])
 
-callback = keras.callbacks.EarlyStopping(monitor='val_loss', patience=3)
+callback = keras.callbacks.EarlyStopping(monitor='val_loss', patience=30)
 
 
 
@@ -71,6 +73,7 @@ m_hist=model.fit(train_generator,
           verbose=2,
           callbacks=[callback],
           validation_data=validation_generator,
+          steps_per_epoch=34
           )
 
 

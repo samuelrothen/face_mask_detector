@@ -71,7 +71,7 @@ model_face = cv2.dnn.readNet('../models/deploy.prototxt',
 
 
 #Load the Mask Prediction Model
-model_mask = keras.models.load_model('../models/mask_detection_model.h5')
+model_mask = keras.models.load_model('../models/mask_detection_model2.h5')
 
 
 #Initialize Capture and set Framesize
