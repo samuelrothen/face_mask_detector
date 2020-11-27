@@ -6,10 +6,12 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from tensorflow.keras.applications import mobilenet_v2
 from tensorflow.keras import preprocessing
+import pandas as pd
+
 
 classes=['mask','no_mask']
 base_path= '../data/'
-
+model_name='mask_detection_model'
 
 base_model = mobilenet_v2.MobileNetV2(
     weights='imagenet', 
@@ -32,7 +34,7 @@ model.compile(optimizer=keras.optimizers.Adam(learning_rate=0.001),
               loss=keras.losses.categorical_crossentropy,
               metrics=[keras.metrics.categorical_accuracy])
 
-callback = keras.callbacks.EarlyStopping(monitor='loss', patience=3)
+callback = keras.callbacks.EarlyStopping(monitor='val_loss', patience=3)
 
 
 
@@ -64,16 +66,15 @@ validation_generator = data_gen.flow_from_directory(
         subset='validation')
 
 
-
 m_hist=model.fit(train_generator, 
-          epochs=50,
-          # steps_per_epoch=500,
+          epochs=100,
           verbose=2,
           callbacks=[callback],
           validation_data=validation_generator,
-          # validation_steps=250
           )
 
 
+hist_df = pd.DataFrame(m_hist.history)
+hist_df.to_pickle(f'../models/{model_name}_hist_df.pkl')
 
-# model.save('../models/test.h5')
+model.save(f'../models/{model_name}.h5')
