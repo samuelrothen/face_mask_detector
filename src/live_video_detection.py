@@ -3,6 +3,10 @@ import numpy as np
 from tensorflow import keras
 from tensorflow.keras.applications import mobilenet_v2
 
+import serial 
+
+arduino = serial.Serial('COM3', 9600)
+
 
 
 def returnDetectedFaces(img,model_face,th=0.9):
@@ -80,6 +84,7 @@ cap.set(3, 1280)
 cap.set(4, 960)
 
 
+
 while True:
     #Get current Image and flip it
     ret, img = cap.read()
@@ -108,16 +113,26 @@ while True:
                      cv2.FONT_HERSHEY_DUPLEX, 1.0, color, 1)
         cv2.putText(img, f'FaceDetect: {round(l_probas[i]*100,1)}%', (coords[0], coords[1] - 40),
                      cv2.FONT_HERSHEY_DUPLEX, 1.0, color, 1)
-        # cv2.circle(img, l_centers[i], 10,
-        #                color, 2)
+        cv2.circle(img, l_centers[i], 10,
+                        color, 2)
         
+        
+        if prob_mask<prob_no_mask:
+            if l_centers[i][0]>800:
+                arduino.write('R'.encode('utf-8'))
+            if l_centers[i][0]<400:
+                arduino.write('L'.encode('utf-8'))
+
+
     cv2.imshow('VideoCapture', img)
 
+    #End the While-Loop by pressing the Q-Key
     if cv2.waitKey(1) & 0xff == ord('q'):
         break
 
 
+#Closes the Video
 cap.release()
 cv2.destroyAllWindows()
-
+arduino.close()
 
