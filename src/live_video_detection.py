@@ -2,11 +2,21 @@ import cv2
 import numpy as np
 from tensorflow import keras
 from tensorflow.keras.applications import mobilenet_v2
-
 import serial 
 
-arduino = serial.Serial('COM3', 9600)
+#Set to True if Arduino is used for Camera Positioning
+use_arduino=False
+if use_arduino:
+    arduino = serial.Serial('COM3', 9600)
 
+
+def moveCamera(arduino, curr_pos, min_pos, max_pos):
+    #Moves the Servo of the Arduino if current Position is outside
+    #the min_pos or max_pos Threshold
+    if curr_pos>max_pos:
+        arduino.write('R'.encode('utf-8'))
+    elif curr_pos<min_pos:
+        arduino.write('L'.encode('utf-8'))
 
 
 def returnDetectedFaces(img,model_face,th=0.9):
@@ -75,14 +85,13 @@ model_face = cv2.dnn.readNet('../models/deploy.prototxt',
 
 
 #Load the Mask Prediction Model
-model_mask = keras.models.load_model('../models/mask_detection_model2.h5')
+model_mask = keras.models.load_model('../models/mask_detection_model.h5')
 
 
 #Initialize Capture and set Framesize
 cap = cv2.VideoCapture(0)
 cap.set(3, 1280)
 cap.set(4, 960)
-
 
 
 while True:
@@ -102,9 +111,11 @@ while True:
         if prob_mask>prob_no_mask:
             color=(0, 255, 0)
             text=f'Mask: {round(prob_mask*100,1)}%'
+            no_mask=False
         else:
             color=(0, 0, 255)
             text=f'No Mask: {round(prob_no_mask*100,1)}%'
+            no_mask=True
         
         #Draw Rectangle around Faces and Label them
         cv2.rectangle(img, (coords[0], coords[1]), (coords[2], coords[3]),
@@ -116,14 +127,11 @@ while True:
         cv2.circle(img, l_centers[i], 10,
                         color, 2)
         
-        
-        if prob_mask<prob_no_mask:
-            if l_centers[i][0]>800:
-                arduino.write('R'.encode('utf-8'))
-            if l_centers[i][0]<400:
-                arduino.write('L'.encode('utf-8'))
+        #Track Face if Arduino is used and no Mask is detected
+        if no_mask and use_arduino:
+            moveCamera(arduino, l_centers[i][0], 400, 800)
 
-
+    #Output the Image
     cv2.imshow('VideoCapture', img)
 
     #End the While-Loop by pressing the Q-Key
@@ -131,7 +139,7 @@ while True:
         break
 
 
-#Closes the Video
+#Close the Video
 cap.release()
 cv2.destroyAllWindows()
 arduino.close()
