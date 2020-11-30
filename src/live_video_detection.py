@@ -94,6 +94,7 @@ cap.set(3, 1280)
 cap.set(4, 960)
 
 
+#Camera Loop
 while True:
     #Get current Image and flip it
     ret, img = cap.read()
@@ -124,23 +125,30 @@ while True:
                      cv2.FONT_HERSHEY_DUPLEX, 1.0, color, 1)
         cv2.putText(img, f'FaceDetect: {round(l_probas[i]*100,1)}%', (coords[0], coords[1] - 40),
                      cv2.FONT_HERSHEY_DUPLEX, 1.0, color, 1)
-        cv2.circle(img, l_centers[i], 10,
+        cv2.circle(img, l_centers[i], 5,
                         color, 2)
+        
         
         #Track Face if Arduino is used and no Mask is detected
         if no_mask and use_arduino:
-            moveCamera(arduino, l_centers[i][0], 400, 800)
+            moveCamera(arduino, l_centers[i][0], 300, 980)
+
+# if use_arduino:
+    cv2.line(img, (980,0), (980,960), (255, 255, 255), 1)
+    cv2.line(img, (300,0), (300,960), (255, 255, 255), 1)
 
     #Output the Image
     cv2.imshow('VideoCapture', img)
 
     #End the While-Loop by pressing the Q-Key
-    if cv2.waitKey(1) & 0xff == ord('q'):
+    if cv2.waitKey(1) == ord('q'):
         break
 
 
 #Close the Video
 cap.release()
 cv2.destroyAllWindows()
-arduino.close()
+#Close the Serial-Connection if Arduino is used
+if use_arduino:
+    arduino.close()
 
