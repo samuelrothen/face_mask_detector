@@ -128,14 +128,13 @@ while True:
         cv2.circle(img, l_centers[i], 5,
                         color, 2)
         
-        
         #Track Face if Arduino is used and no Mask is detected
         if no_mask and use_arduino:
-            moveCamera(arduino, l_centers[i][0], 300, 980)
+            moveCamera(arduino, l_centers[i][0], 500, 780)
 
-# if use_arduino:
-    cv2.line(img, (980,0), (980,960), (255, 255, 255), 1)
-    cv2.line(img, (300,0), (300,960), (255, 255, 255), 1)
+    if use_arduino:
+        cv2.line(img, (780,0), (780,960), (255, 255, 255), 1)
+        cv2.line(img, (500,0), (500,960), (255, 255, 255), 1)
 
     #Output the Image
     cv2.imshow('VideoCapture', img)
@@ -151,4 +150,3 @@ cv2.destroyAllWindows()
 #Close the Serial-Connection if Arduino is used
 if use_arduino:
     arduino.close()
-
