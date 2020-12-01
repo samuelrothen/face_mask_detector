@@ -4,13 +4,13 @@ from tensorflow.keras import preprocessing
 import pandas as pd
 
 
-classes=['mask','no_mask']
-base_path= '../data/'
-model_name='mask_detection_model3'
+classes = ['mask', 'no_mask']
+base_path = '../data/'
+model_name = 'mask_detection_model3'
 
 # Creating the MobileNetV2 Base-Model
 base_model = mobilenet_v2.MobileNetV2(
-    weights='imagenet', 
+    weights='imagenet',
     include_top=False,
     input_shape=(224, 224, 3))
 
@@ -20,7 +20,7 @@ base_model.trainable = False
 # Definition of the Model
 model = keras.Sequential()
 model.add(base_model)
-model.add(keras.layers.AveragePooling2D((7,7)))
+model.add(keras.layers.AveragePooling2D((7, 7)))
 model.add(keras.layers.Flatten())
 model.add(keras.layers.Dense(100, activation='relu'))
 model.add(keras.layers.Dropout(0.5))
@@ -50,29 +50,29 @@ data_gen = preprocessing.image.ImageDataGenerator(
 
 # Creating the Generators for the Training und Validation Data
 train_generator = data_gen.flow_from_directory(
-        directory=base_path,
-        class_mode="categorical",
-        classes=classes,
-        batch_size=32,
-        target_size=(224, 224),
-        subset='training')
+    directory=base_path,
+    class_mode="categorical",
+    classes=classes,
+    batch_size=32,
+    target_size=(224, 224),
+    subset='training')
 
 validation_generator = data_gen.flow_from_directory(
-        directory=base_path,
-        class_mode="categorical",
-        classes=classes,
-        batch_size=32,
-        target_size=(224, 224),
-        subset='validation')
+    directory=base_path,
+    class_mode="categorical",
+    classes=classes,
+    batch_size=32,
+    target_size=(224, 224),
+    subset='validation')
 
 # Trainings the Model
-m_hist=model.fit(train_generator, 
-          epochs=100,
-          verbose=2,
-          callbacks=[callback],
-          validation_data=validation_generator,
-          steps_per_epoch=34
-          )
+m_hist = model.fit(train_generator,
+                   epochs=100,
+                   verbose=2,
+                   callbacks=[callback],
+                   validation_data=validation_generator,
+                   steps_per_epoch=34
+                   )
 
 # Save Model and Training History
 hist_df = pd.DataFrame(m_hist.history)

@@ -45,27 +45,46 @@ def drawBox(img, bbox):
     cv2.rectangle(img, (x, y), ((x + w), (y + h)), (0, 0, 255), 3, 1)
 
 
-def getContours(img,imgContour):
-    contours,hier=cv2.findContours(img,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE)
-    
+def getContours(img, imgContour):
+    contours, hier = cv2.findContours(
+        img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+
     for contour in contours:
-        area=cv2.contourArea(contour)
-        if area>5000:
-            cv2.drawContours(imgContour,contour,-1,(255,0,0),7)
-            peri=cv2.arcLength(contour,True)
-            approx=cv2.approxPolyDP(contour,0.02*peri,True)
+        area = cv2.contourArea(contour)
+        if area > 5000:
+            cv2.drawContours(imgContour, contour, -1, (255, 0, 0), 7)
+            peri = cv2.arcLength(contour, True)
+            approx = cv2.approxPolyDP(contour, 0.02 * peri, True)
             print(len(approx))
-            bbox=cv2.boundingRect(approx)
-            
-            if bbox[2]<200:
-                drawBox(imgContour,bbox)
-                cv2.putText(imgContour, f'Points: {len(approx)}',(bbox[0], bbox[1]-10),
-                    cv2.FONT_HERSHEY_COMPLEX, 0.7, (0, 0, 255), 2)
+            bbox = cv2.boundingRect(approx)
+
+            if bbox[2] < 200:
+                drawBox(imgContour, bbox)
+                cv2.putText(
+                    imgContour,
+                    f'Points: {len(approx)}',
+                    (bbox[0],
+                     bbox[1] - 10),
+                    cv2.FONT_HERSHEY_COMPLEX,
+                    0.7,
+                    (0,
+                     0,
+                     255),
+                    2)
                 # cv2.putText(imgContour, f'Area: {area}',(bbox[0], bbox[1]-30),
                 #     cv2.FONT_HERSHEY_COMPLEX, 0.7, (0, 0, 255), 2)
-                cv2.putText(imgContour, f'W/H: {bbox[2]}/{bbox[3]}',(bbox[0], bbox[1]-30),
-                    cv2.FONT_HERSHEY_COMPLEX, 0.7, (0, 0, 255), 2)
-            
+                cv2.putText(
+                    imgContour,
+                    f'W/H: {bbox[2]}/{bbox[3]}',
+                    (bbox[0],
+                     bbox[1] - 30),
+                    cv2.FONT_HERSHEY_COMPLEX,
+                    0.7,
+                    (0,
+                     0,
+                     255),
+                    2)
+
 
 success, img1 = cap.read()
 success, img2 = cap.read()
@@ -79,36 +98,32 @@ while True:
     # img=cv2.absdiff(img1,img2)
     success, img = cap.read()
     img = cv2.flip(img, 1)
-    imgContour=img.copy()
-    
+    imgContour = img.copy()
+
     imgBlur = cv2.GaussianBlur(img, (7, 7), 1)
     imgGray = cv2.cvtColor(imgBlur, cv2.COLOR_BGR2GRAY)
 
     th1 = cv2.getTrackbarPos('TH1', 'Trackbars')
     th2 = cv2.getTrackbarPos('TH2', 'Trackbars')
     img_edges = cv2.Canny(img, th1, th2)
-    kernel=np.ones((5,5))
-    img_dil=cv2.dilate(img_edges,kernel,iterations=1)
-    
+    kernel = np.ones((5, 5))
+    img_dil = cv2.dilate(img_edges, kernel, iterations=1)
 
-    getContours(img_dil,imgContour)
-
+    getContours(img_dil, imgContour)
 
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-    
+
     mask = cv2.inRange(hsv, lower_color, upper_color)
     # mask = cv2.erode(mask, None, iterations=2)
     # mask = cv2.dilate(mask, None, iterations=2)
 
-
-
     cv2.imshow('Result', stackCV2Images([[img, imgBlur, imgGray],
-                                          [img_edges,img_dil,imgContour]]))
+                                         [img_edges, img_dil, imgContour]]))
     # cv2.namedWindow('Result', flags=cv2.WINDOW_GUI_NORMAL)
     # cv2.imshow('Result', stackCV2Images([[img_edges,imgContour],[hsv,mask]]))
     # img1=img2
     # success, img2 = cap.read()
-    
+
     if cv2.waitKey(1) & 0xff == ord('q'):
         break
 
