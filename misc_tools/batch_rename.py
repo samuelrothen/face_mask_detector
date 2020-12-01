@@ -2,7 +2,6 @@ import os
 
 #Small tool for batch-renaming Files
 
-
 path='../data/no_mask/'
 files=os.listdir(path)
 

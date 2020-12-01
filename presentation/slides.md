@@ -1,8 +1,9 @@
 ---
 author: Samuel Rothen
-title: Final Project Presentation
-subtitle: Live Face Mask Detection and Tracking
-date: 04-12-2020
+title: Spiced Academy Final Project Presentation  
+subtitle: |
+  ![](img/face_mask_detector_logo_presentation.svg){ width=100% }  
+date: 04.12.2020
 theme: black # https://revealjs.com/themes/
 transition: fade # https://revealjs.com/transitions/
 # see all the options here: https://revealjs.com/config/
@@ -19,15 +20,23 @@ autoPlayMedia: true
 
 ![](img/group_masks.png){ width=80% }
 
+
 ## Project Introduction <i class="far fa-compass"></i>
 
 ![](img/group_masks_markings.png){ width=80% }
 
-## Project Goals <i class="far fa-question-circle"></i>
 
-- Face Tracking
-- Face Mask Detection
-- Camera follows People w/o Face Mask
+## Project Goals <i class="fas fa-clipboard-list"></i>
+
+<div class="left">
+![](img/group_masks_markings.png){ width=100% }
+</div>
+<div class="right">
+1. Face Tracking
+2. Face Mask Detection
+3. Camera follows People w/o Face Mask
+</div>
+
 
 ## Project Structure <i class="fas fa-sort-alpha-down"></i>
 
@@ -55,12 +64,13 @@ autoPlayMedia: true
 
 ## Random Statistics <i class="fas fa-chart-line"></i>
 
-- <i class="fab fa-python"></i> **1.000** Lines of Python-Code<br>
-- <i class="fas fa-microchip"></i> **54** Lines of Arduino-Code<br>
+- <i class="fab fa-python"></i> **258** Lines of Python-Code<br>
+- <i class="fas fa-microchip"></i> **39** Lines of Arduino-Code<br>
 - <i class="fab fa-github"></i> **500** Commits to GitHub<br>
 - <i class="fas fa-images"></i> **4.515** Train/Test-Pictures<br>
+- <i class="fas fa-ellipsis-v"></i><i class="fas fa-ellipsis-v"></i><i class="fas fa-ellipsis-v"></i> **2.386.286** Neurons<br>
+- <i class="fas fa-layer-group"></i> **6** Layers<br>
 - <i class="fas fa-redo"></i> **68** Epochs for Training<br>
-- <i class="far fa-clock"></i> **50** Minutes to Train the Model<br>
-- <i class="fas fa-bullseye"></i> **99,3%** Validation Accuracy
+- <i class="far fa-clock"></i> **50** Minutes to Train the Model
 
 

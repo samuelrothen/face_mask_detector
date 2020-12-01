@@ -12,7 +12,6 @@ void setup() {
   delay(1000);
 }
 
-
 //Main Loop
 void loop() {
 

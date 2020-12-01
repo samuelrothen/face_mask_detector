@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 hist_file='../models/mask_detection_model_hist_df.pkl'
 df_hist=pd.read_pickle(hist_file)
 
-
 fig=plt.figure('Model History')
 fig.clf()
 ax=plt.subplot(111)
