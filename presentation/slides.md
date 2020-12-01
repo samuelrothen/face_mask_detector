@@ -40,7 +40,23 @@ autoPlayMedia: true
 
 ## Project Structure <i class="fas fa-sort-alpha-down"></i>
 
-** IMAGE OF PROJECT STRUCTURE **
+![](img/ps_face_tracking.svg){ width=100% }
+
+
+## Project Structure <i class="fas fa-sort-alpha-down"></i>
+
+![](img/ps_tensoflow.svg){ width=100% }
+
+## Project Structure <i class="fas fa-sort-alpha-down"></i>
+
+![](img/ps_mask_detection.svg){ width=100% }
+
+## Project Structure <i class="fas fa-sort-alpha-down"></i>
+
+![](img/ps_full.svg){ width=100% }
+
+
+
 
 
 ## Live Face Tracking <i class="fas fa-user"></i>
