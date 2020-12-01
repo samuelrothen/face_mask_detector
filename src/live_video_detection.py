@@ -143,6 +143,7 @@ while True:
         if no_mask and use_arduino:
             moveCamera(arduino, l_centers[i][0], 500, 780)
 
+    # Draw Threshold Borders for Camera Tracking
     if use_arduino:
         cv2.line(img, (780, 0), (780, 960), (255, 255, 255), 1)
         cv2.line(img, (500, 0), (500, 960), (255, 255, 255), 1)
