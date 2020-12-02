@@ -55,6 +55,11 @@ autoPlayMedia: true
 
 ## Project Structure <i class="fas fa-project-diagram"></i>
 
+![](img/ps_camera_mount.svg){ width=100% }
+
+
+## Project Structure <i class="fas fa-project-diagram"></i>
+
 ![](img/ps_full.svg){ width=100% }
 
 
