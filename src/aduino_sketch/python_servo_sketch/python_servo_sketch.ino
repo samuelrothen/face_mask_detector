@@ -7,7 +7,7 @@ char input = "";
 //Startup-Setup
 void setup() {
   Serial.begin(9600);
-  servoX.attach(2);
+  servoX.attach(8);
   servoX.write(x);
   delay(1000);
 }
