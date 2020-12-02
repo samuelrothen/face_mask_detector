@@ -38,30 +38,25 @@ autoPlayMedia: true
 </div>
 
 
-## Project Structure <i class="fas fa-sort-alpha-down"></i>
+## Project Structure <i class="fas fa-project-diagram"></i>
 
 ![](img/ps_face_tracking.svg){ width=100% }
 
 
-## Project Structure <i class="fas fa-sort-alpha-down"></i>
+## Project Structure <i class="fas fa-project-diagram"></i>
 
 ![](img/ps_tensoflow.svg){ width=100% }
 
-## Project Structure <i class="fas fa-sort-alpha-down"></i>
+
+## Project Structure <i class="fas fa-project-diagram"></i>
 
 ![](img/ps_mask_detection.svg){ width=100% }
 
-## Project Structure <i class="fas fa-sort-alpha-down"></i>
+
+## Project Structure <i class="fas fa-project-diagram"></i>
 
 ![](img/ps_full.svg){ width=100% }
 
-
-
-
-
-## Live Face Tracking <i class="fas fa-user"></i>
-
-** TEXT TEXT TEXT ***
 
 ## Live Face Tracking <i class="fas fa-user"></i>
 
@@ -78,7 +73,7 @@ autoPlayMedia: true
 ![](img/camera_mount.jpg){ width=60% }
 
 
-## Automated Camera-Mount <i class="fas fa-video"></i>
+## Complete System <i class="fas fa-cogs"></i>
 
 ![](img/tracking_demo.gif){ width=80% }
 
@@ -95,7 +90,7 @@ autoPlayMedia: true
 </div>
 
 
-## Random Statistics <i class="fas fa-chart-line"></i>
+## Random Statistics <i class="far fa-chart-bar"></i>
 
 - <i class="fab fa-python"></i> **273** Lines of Python-Code<br>
 - <i class="fas fa-microchip"></i> **39** Lines of Arduino-Code<br>
