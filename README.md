@@ -8,7 +8,7 @@ The year 2020 is dominated by the global COVID-19 pandemic. People wearing face 
 
 ## Project Structure
 
-![](C:\Users\samue\OneDrive\Dokumente\Programmieren_Python\Spiced\Final Project\object_tracking_spiced\docs\img\ps_full_dark.svg)
+![](docs/img/ps_full_dark.svg)
 
 
 
@@ -28,7 +28,7 @@ The usage of an Arduino is disabled by default. If you want to use an Arduino to
 
 1. Connect a servo motor to your Arduino using the following wiring:
 
-![](C:\Users\samue\OneDrive\Dokumente\Programmieren_Python\Spiced\Final Project\object_tracking_spiced\docs\img\arduino_circuit.PNG)
+![](docs/img/arduino_circuit.PNG)
 
 2. Upload the `.ino`-Sketch from `src/aduino_sketch/python_servo_sketch/python_servo_sketch.ino` using the [Arduino IDE](https://www.arduino.cc/en/software) to your Arduino
 
