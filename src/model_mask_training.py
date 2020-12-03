@@ -6,7 +6,7 @@ import pandas as pd
 
 classes = ['mask', 'no_mask']
 base_path = '../data/'
-model_name = 'mask_detection_model3'
+model_name = 'mask_detection_model'
 
 # Creating the MobileNetV2 Base-Model
 base_model = mobilenet_v2.MobileNetV2(
