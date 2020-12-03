@@ -99,9 +99,24 @@ autoPlayMedia: true
 
 - <i class="fab fa-python"></i> **273** Lines of Python-Code<br>
 - <i class="fas fa-microchip"></i> **39** Lines of Arduino-Code<br>
-- <i class="fab fa-github"></i> **23** Commits to GitHub<br>
+- <i class="fab fa-github-square"></i> **23** Commits to GitHub<br>
 - <i class="fas fa-images"></i> **4.515** Train/Test-Pictures<br>
 - <i class="fas fa-ellipsis-v"></i><i class="fas fa-ellipsis-v"></i><i class="fas fa-ellipsis-v"></i> **2.386.286** Neurons<br>
 - <i class="fas fa-layer-group"></i> **6** Model-Layers<br>
 - <i class="fas fa-redo"></i> **68** Epochs for Training<br>
 - <i class="far fa-clock"></i> **50** Minutes to train the Model
+
+---
+
+
+**Thank You!**<br>
+Questions?
+
+
+<br>
+<font size="5"> 
+
+<i class="fab fa-github"></i> [https://github.com/samuelrothen](https://github.com/samuelrothen) <i class="fab fa-github"></i>
+
+</font> 
+
