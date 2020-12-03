@@ -12,9 +12,6 @@ The year 2020 is dominated by the global COVID-19 pandemic. People wearing face 
 
 
 
-
-
-
 ## General Usage
 
 1. Clone the Git repository: `https://github.com/samuelrothen/face_mask_detector.git`
@@ -30,10 +27,9 @@ The usage of an Arduino is disabled by default. If you want to use an Arduino to
 
 ![](docs/img/arduino_circuit.PNG)
 
-2. Upload the `.ino`-Sketch from `src/aduino_sketch/python_servo_sketch/python_servo_sketch.ino` using the [Arduino IDE](https://www.arduino.cc/en/software) to your Arduino
+2. Upload the `.ino`-Sketch from `src/aduino_sketch/python_servo_sketch/python_servo_sketch.ino` using the [Arduino IDE](https://www.arduino.cc/en/software)
 
-3. src/aduino_sketch/python_servo_sketch/python_servo_sketch.ino
-4.  Open `/src/live_video_detection.py` and set `use_arduino` to `True` (default is `False`)  and define your COM-Port in `serial.Serial(...)`
+3. Open `/src/live_video_detection.py` and set `use_arduino` to `True` (default is `False`)  and define your COM-Port in `serial.Serial(...)`
 
 ```python
 use_arduino = False
