@@ -4,7 +4,7 @@
 
 The Year 2020 is dominated by the global COVID-19 Pandemic. People wearing Face Masks, to protect themselves against an Infection, is an omnipresent Picture.
 
-This Project uses a Combination of OpenCV Face Tracking and a TensorFlow Neural Network to detect Faces and distinguish between People waring a Face Mask and People who don't.
+This Project uses a Combination of OpenCV Face Tracking and a TensorFlow Neural Network to detect Faces and distinguish between People wearing a Face Mask and People who don't.
 
 Those Informations are used to control an automated Camera-Mount, to track People not wearing a Face Mask.
 
